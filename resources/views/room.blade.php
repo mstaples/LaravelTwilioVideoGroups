@@ -63,33 +63,10 @@
                 margin-bottom: 30px;
             }
         </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Video Chat Rooms
-                </div>
-
-                <div id="media-div">
-
-                </div>
-            </div>
-        </div>
+        <!-- Scripts -->
         <script src="//media.twiliocdn.com/sdk/js/video/v1/twilio-video.min.js"></script>
-
         <script>
-
             Twilio.Video.createLocalTracks({
                 audio: true,
                 video: { width: 300 }
@@ -158,7 +135,29 @@
             function trackRemoved(track) {
                 track.detach().forEach( function(element) { element.remove() });
             }
+        </script>
+    </head>
+    <body>
+        <div class="flex-center position-ref full-height">
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('register') }}">Register</a>
+                    @endauth
+                </div>
+            @endif
 
-    </script>
+            <div class="content">
+                <div class="title m-b-md">
+                    Video Chat Rooms
+                </div>
+
+                <div id="media-div">
+
+                </div>
+            </div>
+        </div>
     </body>
 </html>
